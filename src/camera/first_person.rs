@@ -454,7 +454,7 @@ impl CoordSystemRh {
     fn from_up_axis(up_axis: Unit<Vector3<f32>>) -> Self {
         let rotation_to_y_up = UnitQuaternion::rotation_between_axis(&up_axis, &Vector3::y_axis())
             .unwrap_or_else(|| {
-                UnitQuaternion::from_axis_angle(&Vector3::x_axis(), std::f32::consts::PI)
+                UnitQuaternion::from_axis_angle(&Vector3::x_axis(), f32::consts::PI)
             });
         Self {
             up_axis,

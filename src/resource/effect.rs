@@ -1,7 +1,6 @@
 use std::fs::File;
 use std::io::Read;
 use std::marker::PhantomData;
-use std::mem;
 use std::path::Path;
 use std::str;
 
@@ -167,8 +166,8 @@ impl<T: GLPrimitive> ShaderAttribute<T> {
             T::size() as i32,
             T::GLTYPE,
             false,
-            ((strides + 1) * mem::size_of::<T2>()) as i32,
-            (start_index * mem::size_of::<T2>()) as GLintptr
+            ((strides + 1) * size_of::<T2>()) as i32,
+            (start_index * size_of::<T2>()) as GLintptr
         ));
     }
 }

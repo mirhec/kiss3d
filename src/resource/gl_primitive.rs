@@ -1,7 +1,7 @@
 //! Structures that a gpu buffer may contain.
 
 use crate::context::{Context, UniformLocation};
-use std::{mem, slice};
+use std::slice;
 
 use na::{
     Matrix2, Matrix3, Matrix4, Point2, Point3, Point4, Rotation2, Rotation3, Vector2, Vector3,
@@ -19,7 +19,7 @@ pub unsafe trait GLPrimitive: Copy {
     const GLTYPE: u32;
     /// The number of elements of type `self.gl_type()` this structure stores.
     fn size() -> u32 {
-        (mem::size_of::<Self>() / mem::size_of::<Self::Element>()) as u32
+        (size_of::<Self>() / size_of::<Self::Element>()) as u32
     }
     /// Converts an array of `Self` into an array of f32 or i32 primitives.
     fn flatten(array: &[Self]) -> &[Self::Element] {

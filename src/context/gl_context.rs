@@ -220,7 +220,7 @@ impl AbstractContext for GLContext {
 
     fn buffer_data<T: GLPrimitive>(&self, target: GLenum, data: &[T], usage: GLenum) {
         unsafe {
-            let len = data.len() * mem::size_of::<T>();
+            let len = data.len() * size_of::<T>();
             let ptr = data.as_ptr() as *const u8;
             let data = std::slice::from_raw_parts(ptr, len);
             self.context.buffer_data_u8_slice(target, data, usage)
@@ -229,7 +229,7 @@ impl AbstractContext for GLContext {
 
     fn buffer_sub_data<T: GLPrimitive>(&self, target: GLenum, offset: u32, data: &[T]) {
         unsafe {
-            let len = data.len() * mem::size_of::<T>();
+            let len = data.len() * size_of::<T>();
             let ptr = data.as_ptr() as *const u8;
             let data: &[u8] = std::slice::from_raw_parts(ptr, len);
             self.context

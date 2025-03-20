@@ -473,8 +473,7 @@ impl ConrodRenderer {
 
                         let w = (texture.1).0 as f64;
                         let h = (texture.1).1 as f64;
-                        let mut tex = source_rect
-                            .unwrap_or(conrod::position::Rect::from_corners([0.0, 0.0], [w, h]));
+                        let mut tex = source_rect.unwrap_or(Rect::from_corners([0.0, 0.0], [w, h]));
                         tex.x.start /= w;
                         tex.x.end /= w;
                         // Because opengl textures are loaded upside down.
